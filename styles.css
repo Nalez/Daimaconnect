@@ -64,6 +64,9 @@ h1, h2, h3, h4, h5, h6 {
 .btn-primary:hover {
     background-color: hsl(177, 92%, 55%);
     transform: translateY(-2px);
+    box-shadow: 
+        0 0px 35px rgba(23, 143, 255, 0.373), 
+        0 0 10px rgba(106, 23, 255, 0.3);
 }
 
 .btn-secondary {
@@ -73,7 +76,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-secondary:hover {
-    background-color: rgba(46, 238, 168, 0.1);
+    background-color: #1df0ff;
+    color:var(--dark-teal);
+    box-shadow: 
+        0 0px 35px rgba(23, 143, 255, 0.373), 
+        0 0 10px rgba(106, 23, 255, 0.3);
 }
 
 .btn-outline {
@@ -96,7 +103,7 @@ h1, h2, h3, h4, h5, h6 {
     position: sticky;
     top: 0;
     z-index: 50;
-    background-color: rgba(9, 31, 45, 0.8);
+    background-color: rgba(9, 31, 45, 0.407);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
     padding: 1rem 0;
@@ -152,14 +159,23 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .cta-btn {
-    background-color:rgb(73, 45, 231);
-    color:var(--background);
+    background-color:rgba(45, 209, 231, 0.858);
+    color:var(--dark-teal);
     padding: 0.5rem 1.5rem;
     border-radius: 0.5rem;
 }
 
 .cta-btn:hover {
-    background-color: hsl(177, 92%, 55%);
+    background-color: #550edf; 
+    color: #ffffff;
+    /* THE GLOW EFFECT */
+    box-shadow: 
+        /* Inner glow */
+        0 0 5px rgba(255, 255, 255, 0.5), 
+        /* Main outer glow matching the button color */
+        0 0 15px #6a17ff, 
+        /* Wider, softer glow */
+        0 0 30px rgba(106, 23, 255, 0.5);
 }
 
 /* Hero Section */
@@ -208,7 +224,26 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0 auto;
     text-align: center;
 }
-
+@keyframes flicker-glow {
+    0%, 100% {
+        /* Fainter glow + base size */
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.4), 0 0 10px rgba(0, 255, 255, 0.2);
+        opacity: 0.95;
+        transform: scale(1); /* Base size */
+    }
+    
+    50% {
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.6);
+        opacity: 1;
+        transform: scale(1.02);
+    }
+    
+    70% {
+        box-shadow: 0 0 3px rgba(255, 255, 255, 0.3), 0 0 6px rgba(0, 255, 255, 0.1);
+        opacity: 0.9;
+        transform: scale(0.98);
+    }
+}
 .urgency-badge {
     display: inline-flex;
     align-items: center;
@@ -222,10 +257,15 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
     margin-bottom: 2rem;
     border: 1px solid rgba(46, 235, 238, 0.3);
+    will-change: transform, box-shadow; 
+    animation-name: flicker-glow;
+    animation-duration: 3s; 
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite; 
 }
 
 .hero-title {
-    font-size: 3.5rem;
+    font-size: 4.25rem;
     margin-bottom: 1.5rem;
     line-height: 1.1;
 }
@@ -309,6 +349,9 @@ h1, h2, h3, h4, h5, h6 {
 .pricing-card:hover {
     transform: translateY(-4px);
     border-color: var(--lime);
+    box-shadow: 
+        0 0px 35px rgba(23, 143, 255, 0.373), 
+        0 0 10px rgba(106, 23, 255, 0.3);
 }
 
 .pricing-card.popular {
@@ -471,6 +514,9 @@ h1, h2, h3, h4, h5, h6 {
 .feature-card:hover {
     transform: translateY(-4px);
     border-color: var(--lime);
+    box-shadow: 
+        0 0px 35px rgba(23, 143, 255, 0.373), 
+        0 0 10px rgba(106, 23, 255, 0.3);
 }
 
 .feature-icon {
@@ -658,6 +704,9 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+}
+.contact-icon :hover{
+    transform: scale(0.5rem);
 }
 
 .contact-icon svg {
